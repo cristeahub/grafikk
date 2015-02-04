@@ -1,0 +1,12 @@
+# Mac
+.DS_Store
+
+# Output files
+*.o
+
+# Vim
+*.sw*
+
+# Folders
+old/
+pensum/

@@ -328,7 +328,7 @@ void findFacesAroundVertex(float x, float y, float z, float w)
     for(int i=0; i < verticeCount; i+=4) {
         if(x == vertices[i+0] && y == vertices[i+1]
         && z == vertices[i+2] && w == vertices[i+3]) {
-            vert_num = i; // verticie found
+            vert_num = i/4; // verticie found and normalized to vertex index
             break;
         }
     }

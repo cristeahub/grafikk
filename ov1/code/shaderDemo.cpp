@@ -323,7 +323,50 @@ void initVSL() {
 
 void findFacesAroundVertex(float x, float y, float z, float w)
 {
+    int vert_num = -1;
+    // check vertex number
+    for(int i=0; i < verticeCount; i+=4) {
+        if(x == vertices[i+0] && y == vertices[i+1]
+        && z == vertices[i+2] && w == vertices[i+3]) {
+            vert_num = i; // verticie found
+            break;
+        }
+    }
 
+    // if we somehow didn't find vertex, return with error
+    if(vert_num == -1) {
+        printf("[Error] Couldn't find vertices around vertex!");
+        return;
+    }
+
+    // check what faces this vertex is connected to
+    for(int i=0; i < faceCount; i+=3) {
+        if(vert_num == facesIndex[i+0] || vert_num == facesIndex[i+1]
+        || vert_num == facesIndex[i+2]) {
+
+            // change the color of the face we found connected to the vertex
+            // 3 vertices make one face, so we change the 3 node's colors when
+            // we find them. This by saying that vertex 1 is colors[1..<5] (1 to 4)
+
+            // first vertex of face
+            colors[facesIndex[i+0]+0] = 0.8f; // r
+            colors[facesIndex[i+0]+1] = 0.8f; // g
+            colors[facesIndex[i+0]+2] = 0.8f; // b
+            colors[facesIndex[i+0]+3] = 0.8f; // a
+
+            // second vertex of face
+            colors[facesIndex[i+1]+0] = 0.8f; // r
+            colors[facesIndex[i+1]+1] = 0.8f; // g
+            colors[facesIndex[i+1]+2] = 0.8f; // b
+            colors[facesIndex[i+1]+3] = 0.8f; // a
+
+            // third vertex of face
+            colors[facesIndex[i+2]+0] = 0.8f; // r
+            colors[facesIndex[i+2]+1] = 0.8f; // g
+            colors[facesIndex[i+2]+2] = 0.8f; // b
+            colors[facesIndex[i+2]+3] = 0.8f; // a
+        }
+    }
 }
 
 int main(int argc, char **argv) {

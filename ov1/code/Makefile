@@ -9,7 +9,8 @@ shaderDemo: shaderDemo.o
 	g++ $(LDLIBS) $^ -o shaderDemo
 
 shaderDemo.o: shaderDemo.cpp
-	g++ -c $(CFLAGS) shaderDemo.cpp
+	g++ -c $(CFLAGS) shaderDemo.cpp vsShaderLib.cpp vsMathLib.cpp
 
+.PHONY:
 clean:
 	rm -r *.o shaderDemo
